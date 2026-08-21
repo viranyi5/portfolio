@@ -1180,6 +1180,11 @@ body.page-designer footer.footer {
     display: block;
 }
 
+/* Natív videó csak mobilon kell (iOS-en az iframe gyakran nem játszik) */
+.modal-native-video {
+    display: none;
+}
+
 .modal-close {
     position: absolute;
     top: 1rem;
@@ -1213,20 +1218,33 @@ body.page-designer footer.footer {
     }
 }
 
-/* --- 7. Reszponzív (mobil) --- */
+/* --- 7. Reszponzív (mobil) – a gépes stílusokat nem írja felül --- */
 @media (max-width: 768px) {
-    section {
-        padding: 60px 0;
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
     }
 
+    section {
+        padding: 52px 0;
+    }
+
+    /* Kompakt hamburger gomb jobb felül, nincs üres sáv */
     .navbar {
-        top: 8px;
-        left: 12px;
-        right: 12px;
+        top: max(10px, env(safe-area-inset-top, 0px));
+        left: auto;
+        right: 14px;
         transform: none;
-        width: auto;
+        width: 48px;
+        height: 48px;
         max-width: none;
-        padding: 0.35rem 0.5rem;
+        padding: 0;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1100;
     }
 
     .navbar.navbar-hidden {
@@ -1237,34 +1255,57 @@ body.page-designer footer.footer {
 
     .nav-container {
         margin: 0;
-        width: auto;
+        width: 100%;
         max-width: none;
-        padding: 0.2rem 0.2rem;
-        justify-content: flex-end;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .nav-logo {
+        display: none;
     }
 
     .nav-menu {
         position: fixed;
-        left: -100%;
-        top: 78px;
-        flex-direction: column;
-        background: rgba(15, 23, 42, 0.5);
+        inset: 0;
+        left: 0;
+        top: 0;
         width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
+        background: rgba(15, 23, 42, 0.96);
         text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
-        border-top: 1px solid rgba(148, 163, 184, 0.3);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        padding: 2rem 0;
+        padding: 5rem 1.5rem 2rem;
+        box-shadow: none;
+        border: none;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transform: translateX(-110%);
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.3s ease, visibility 0.3s ease;
+        z-index: 1090;
     }
 
     .nav-menu.active {
-        left: 0;
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .nav-link {
+        font-size: 1.25rem;
+        padding: 0.6rem 0.4rem;
     }
 
     .hamburger {
         display: flex;
+        padding: 10px;
+        z-index: 1110;
+        position: relative;
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -1280,21 +1321,25 @@ body.page-designer footer.footer {
     }
 
     .hero {
-        padding-top: 70px;
+        padding-top: 24px;
+        min-height: 100svh;
     }
 
     .hero-container {
         padding: 0 16px;
+        width: 100%;
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2rem;
         white-space: normal;
+        margin-bottom: 1.25rem;
     }
 
     .hero-subtitle {
         font-size: 1.05rem;
-        margin-top: 1rem;
+        margin-top: 0.75rem;
+        padding: 0 0.25rem;
     }
 
     .hero-buttons {
@@ -1311,13 +1356,19 @@ body.page-designer footer.footer {
     }
 
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: 1.5rem;
         padding: 0;
+        max-width: 100%;
+    }
+
+    .project-card,
+    .project-content {
+        min-width: 0;
     }
 
     .project-content {
-        padding: 1.5rem;
+        padding: 1.35rem 1.15rem;
     }
 
     .skills-grid {
@@ -1330,24 +1381,50 @@ body.page-designer footer.footer {
         gap: 1rem;
     }
 
+    .stat {
+        padding: 1.35rem;
+    }
+
     .contact-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 1rem 0;
+        gap: 1.5rem;
+        padding: 0.5rem 0 0;
     }
 
     .contact-item {
-        padding: 1.25rem 1.5rem;
+        padding: 1.1rem 1.15rem;
+        gap: 1rem;
+    }
+
+    .contact-item:hover {
+        transform: none;
     }
 
     .contact-form {
-        padding: 1.5rem;
+        padding: 1.25rem 1.1rem 1.4rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-group {
+        margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .contact-form .btn {
+        width: 100%;
     }
 
     .videos-page,
     .gallery-page {
-        padding-top: 80px;
-        padding-bottom: 60px;
+        padding-top: 72px;
+        padding-bottom: 56px;
     }
 
     .video-grid {
@@ -1367,15 +1444,34 @@ body.page-designer footer.footer {
     .back-to-portfolio {
         display: inline-flex;
         margin-bottom: 1rem;
+        left: auto !important;
+        position: static !important;
     }
 
     .modal {
         padding: 0.75rem;
+        align-items: center;
     }
 
     .modal-content {
-        max-width: 100%;
+        max-width: min(100%, 420px);
+        max-height: 85svh;
+        width: 100%;
         border-radius: 16px;
+        aspect-ratio: 9 / 16;
+    }
+
+    .modal-content iframe {
+        display: none;
+    }
+
+    .modal-native-video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #000;
+        border: none;
     }
 
     .modal-close {
@@ -1392,6 +1488,10 @@ body.page-designer footer.footer {
         right: max(20px, env(safe-area-inset-right, 0px));
         width: 44px;
         height: 44px;
+    }
+
+    .footer {
+        padding: 1.5rem 0 5.5rem;
     }
 
     .footer-content {
