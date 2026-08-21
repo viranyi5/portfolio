@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petko portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Stílusok és betűtípusok -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- EmailJS (kapcsolati űrlaphoz – jelenleg Formspree aktív) -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+    <!-- ========== NAVIGÁCIÓ ========== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home" aria-label="Főoldal">
+                    <img src="favicon.svg" alt="Petko logo" class="nav-logo-img">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Kezdőlap</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">Rólam</a></li>
+                <li class="nav-item"><a href="#skills" class="nav-link">Készségek</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projektek</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Kapcsolat</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO (Főoldal fejléc) ========== -->
+    <section id="home" class="hero">
+        <div class="hero-bg-animation" aria-hidden="true">
+            <span class="hero-bubble" style="--bubble-size: 120px; --bubble-x: 15%; --bubble-y: 25%; --bubble-delay: 0s;"></span>
+            <span class="hero-bubble" style="--bubble-size: 80px; --bubble-x: 75%; --bubble-y: 15%; --bubble-delay: 1.5s;"></span>
+            <span class="hero-bubble" style="--bubble-size: 160px; --bubble-x: 80%; --bubble-y: 70%; --bubble-delay: 3s;"></span>
+            <span class="hero-bubble" style="--bubble-size: 60px; --bubble-x: 10%; --bubble-y: 65%; --bubble-delay: 0.5s;"></span>
+            <span class="hero-bubble" style="--bubble-size: 100px; --bubble-x: 50%; --bubble-y: 85%; --bubble-delay: 2s;"></span>
+            <span class="hero-bubble" style="--bubble-size: 70px; --bubble-x: 90%; --bubble-y: 40%; --bubble-delay: 2.5s;"></span>
+            <span class="hero-bubble" style="--bubble-size: 90px; --bubble-x: 25%; --bubble-y: 80%; --bubble-delay: 1s;"></span>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Üdv! Petko vagyok, videóvágó, designer.</h1>
+                <p class="hero-subtitle">
+                    Professzionális videóvágást készítek, amelyek nemcsak jól néznek ki, hanem kiváló felhasználói élményt nyújtanak.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Projektek</a>
+                    <a href="#contact" class="btn btn-secondary">Kapcsolat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RÓLAM ========== -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Rólam</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        19 éves vagyok, szenvedélyes videóvágó, aki szeret kreatív megoldásokat találni komplex feladatokra.
+                        Tapasztalatom van különböző videóvágási projektekben és szerkesztési technikákban.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>3+</h3>
+                            <p>Év Tapasztalat</p>
+                        </div>
+                        <div class="stat">
+                            <h3>20+</h3>
+                            <p>Projekt</p>
+                        </div>
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>Elégedett Ügyfél</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== KÉSZSÉGEK ========== -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Készségek</h2>
+            <div class="skills-grid">
+
+                <!-- Videóvágás -->
+                <div class="skill-category">
+                    <h3>Videóvágás</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Adobe Premiere Pro</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Adobe After Effects</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">DaVinci Resolve</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CapCut</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Képszerkesztés -->
+                <div class="skill-category">
+                    <h3>Képszerkesztés</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Adobe Photoshop</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Color Grading</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Egyéb -->
+                <div class="skill-category">
+                    <h3>Egyéb</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span class="skill-name">Motion Graphics</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Audio Editing</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROJEKTEK ========== -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projektek</h2>
+            <div class="projects-grid">
+
+                <!-- Videóvágás -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-video"></i></div>
+                    <div class="project-content">
+                        <h3>Videóvágás</h3>
+                        <p>Professzionális videóvágás és szerkesztés különböző projektekhez.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Premiere Pro</span>
+                            <span class="tech-tag">After Effects</span>
+                            <span class="tech-tag">DaVinci Resolve</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="videos.html" class="project-link project-link--btn">
+                                <i class="fas fa-play-circle"></i> Videók megtekintése
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Képeim -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-images"></i></div>
+                    <div class="project-content">
+                        <h3>Képeim</h3>
+                        <p>Szerkesztett képeim, amiket Photoshopban és más eszközökkel készítettem.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Photoshop</span>
+                            <span class="tech-tag">Képszerkesztés</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="kepeim.html" class="project-link project-link--btn">
+                                <i class="fas fa-images"></i> Képek megtekintése
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Designer munkák -->
+                <div class="project-card">
+                    <div class="project-image"><i class="fas fa-pencil-ruler"></i></div>
+                    <div class="project-content">
+                        <h3>Designer munkák</h3>
+                        <p>Kreatív designprojektjeim, amelyek videókhoz, social tartalomhoz és brand anyagokhoz készültek.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Grafikai design</span>
+                            <span class="tech-tag">UI/UX</span>
+                            <span class="tech-tag">Branding</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="designer.html" class="project-link project-link--btn">
+                                <i class="fas fa-palette"></i> Designer munkák
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== KAPCSOLAT ========== -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Kapcsolat</h2>
+            <div class="contact-content">
+
+                <!-- Elérhetőségek -->
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>petkoscl@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h3>Instagram</h3>
+                            <p>@petkowr</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Helyszín</h3>
+                            <p>Magyarország</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Üzenetküldő űrlap (Formspree) -->
+                <form action="https://formspree.io/f/moeavpoz" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Név</label>
+                        <input type="text" id="contact-name" name="name" placeholder="Neve" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" name="email" placeholder="email@pelda.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Üzenet</label>
+                        <textarea id="contact-message" name="message" placeholder="Írja ide az üzenetét..." required></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="Új üzenet a portfólióról">
+                    <button type="submit" class="btn btn-primary">Üzenet küldése</button>
+                    <p class="form-note"></p>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LÁBLÉC ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Portfolio. Minden jog fenntartva.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/petkowr" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Felgörgetés gomb -->
+    <div class="scroll-to-top" id="scrollToTopBtn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
