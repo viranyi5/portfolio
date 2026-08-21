@@ -314,23 +314,26 @@ function initLightbox() {
 
 function initDesignerVideoModal() {
     const videoModal = document.getElementById('videoModal');
-    const modalVideo = document.getElementById('modalVideo');
+    const modalIframe = document.getElementById('modalVideoPlayer');
     const modalCloseBtn = videoModal?.querySelector('.modal-close');
     const videoTrigger = document.querySelector('.gallery-video-item');
+    const embedBase = videoTrigger?.dataset.videoEmbed;
 
-    if (!videoModal || !modalVideo) return;
+    if (!videoModal || !modalIframe) return;
 
     function openModal() {
+        if (embedBase) {
+            const separator = embedBase.includes('?') ? '&' : '?';
+            modalIframe.src = `${embedBase}${separator}autoplay=true`;
+        }
         videoModal.classList.add('active');
-        modalVideo.play();
     }
 
     function closeModal() {
         videoModal.classList.remove('active');
-        modalVideo.pause();
+        modalIframe.src = '';
     }
 
-    // Globális függvények az onclick attribútumokhoz (designer.html)
     window.openModal = openModal;
     window.closeModal = closeModal;
 
