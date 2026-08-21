@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Designer munkák – Petko portfolio</title>
 
     <!-- Favicon -->
@@ -29,12 +29,13 @@
 
         <!-- Design videók galériája -->
         <section class="gallery-grid">
-            <article class="gallery-item gallery-video-item">
+            <article class="gallery-item gallery-video-item"
+                     data-video-embed="https://player.cloudinary.com/embed/?cloud_name=ftf1xtso&public_id=marquee_party_design">
                 <div class="project-image">
-                    <video playsinline preload="metadata">
-                        <source src="design/marquee party design.mp4" type="video/mp4">
-                        A böngésződ nem támogatja a videó lejátszását.
-                    </video>
+                    <!-- Előnézet: Cloudinary-ból generált képkocka (nincs helyi fájl) -->
+                    <img src="https://res.cloudinary.com/ftf1xtso/video/upload/so_0,q_auto,f_auto/marquee_party_design.jpg"
+                         alt="Marquee Party Design előnézet"
+                         loading="lazy">
                 </div>
                 <div class="project-content">
                     <h3>Marquee Party Design 🔵</h3>
@@ -44,14 +45,15 @@
         </section>
     </main>
 
-    <!-- Videó lejátszó modal (nagyítás kattintásra) -->
+    <!-- Videó lejátszó modal (Cloudinary embed, kattintásra nyílik) -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <button type="button" class="modal-close" aria-label="Bezárás">&times;</button>
-            <video id="modalVideo" controls playsinline controlsList="nodownload">
-                <source src="design/marquee party design.mp4" type="video/mp4">
-                A böngésződ nem támogatja a videó lejátszását.
-            </video>
+            <iframe id="modalVideoPlayer"
+                    title="Marquee Party Design"
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                    frameborder="0"></iframe>
         </div>
     </div>
 
