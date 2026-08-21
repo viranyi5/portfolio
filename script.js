@@ -315,23 +315,47 @@ function initLightbox() {
 function initDesignerVideoModal() {
     const videoModal = document.getElementById('videoModal');
     const modalIframe = document.getElementById('modalVideoPlayer');
+    const nativeVideo = document.getElementById('modalVideoNative');
     const modalCloseBtn = videoModal?.querySelector('.modal-close');
     const videoTrigger = document.querySelector('.gallery-video-item');
     const embedBase = videoTrigger?.dataset.videoEmbed;
 
-    if (!videoModal || !modalIframe) return;
+    if (!videoModal) return;
+
+    function isMobileView() {
+        return window.matchMedia('(max-width: 768px)').matches;
+    }
 
     function openModal() {
-        if (embedBase) {
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Telefonon natív videó (iOS iframe autoplay/lejátszás gyakran elhasal)
+        if (isMobileView() && nativeVideo) {
+            nativeVideo.currentTime = 0;
+            const playPromise = nativeVideo.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => {});
+            }
+            return;
+        }
+
+        if (embedBase && modalIframe) {
             const separator = embedBase.includes('?') ? '&' : '?';
             modalIframe.src = `${embedBase}${separator}autoplay=true`;
         }
-        videoModal.classList.add('active');
     }
 
     function closeModal() {
         videoModal.classList.remove('active');
-        modalIframe.src = '';
+        document.body.style.overflow = '';
+        if (nativeVideo) {
+            nativeVideo.pause();
+            nativeVideo.currentTime = 0;
+        }
+        if (modalIframe) {
+            modalIframe.src = '';
+        }
     }
 
     window.openModal = openModal;
