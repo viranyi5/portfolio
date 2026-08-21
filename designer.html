@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer munkák – Petko portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Stílusok és betűtípusok -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-designer">
+
+    <main class="container gallery-page designer-page">
+        <a href="index.html#projects" class="back-to-portfolio" title="Vissza a portfólióhoz">
+            <i class="fas fa-arrow-left"></i> Vissza a portfólióra
+        </a>
+
+        <h1 class="section-title">Designer munkák</h1>
+        <p class="gallery-intro">
+            Kreatív designmegoldások videókhoz, közösségi média tartalomhoz és vizuális anyagokhoz.
+        </p>
+
+        <!-- Design videók galériája -->
+        <section class="gallery-grid">
+            <article class="gallery-item gallery-video-item">
+                <div class="project-image">
+                    <video playsinline preload="metadata">
+                        <source src="design/marquee party design.mp4" type="video/mp4">
+                        A böngésződ nem támogatja a videó lejátszását.
+                    </video>
+                </div>
+                <div class="project-content">
+                    <h3>Marquee Party Design 🔵</h3>
+                    <p>Party design referencia — vizuális hangulat, stílus és design irányok bemutatására.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Videó lejátszó modal (nagyítás kattintásra) -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <button type="button" class="modal-close" aria-label="Bezárás">&times;</button>
+            <video id="modalVideo" controls playsinline controlsList="nodownload">
+                <source src="design/marquee party design.mp4" type="video/mp4">
+                A böngésződ nem támogatja a videó lejátszását.
+            </video>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Portfolio. Minden jog fenntartva.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/petkowr" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
